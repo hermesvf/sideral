@@ -83,7 +83,7 @@ docs/                        Capturas para este README
 
 ## Créditos
 
-- **Ilustraciones de constelaciones:** [Universum](https://universum.lu/en/atlas/constellations/) · Steve Cimolino, con licencia [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Detalles en [`ilustraciones-universum/LICENSE.txt`](ilustraciones-universum/LICENSE.txt).
+- **Ilustraciones de constelaciones:** [Universum](https://universum.lu/en/atlas/constellations/) · Steve Cimolino, con licencia [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Redimensionadas a 768 px de lado máximo y recomprimidas para aligerar la web. Detalles en [`ilustraciones-universum/LICENSE.txt`](ilustraciones-universum/LICENSE.txt).
 - **Figuras y catálogo de estrellas:** derivados de [d3-celestial](https://github.com/ofrohn/d3-celestial) de Olaf Frohn.
 - **Textura de la Tierra:** Blue Marble (día) y Black Marble 2016 (luces nocturnas), NASA Earth Observatory.
 - **Nubes:** [Solar System Scope](https://www.solarsystemscope.com/textures/), a partir de datos de la NASA, con licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
