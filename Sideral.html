@@ -1923,8 +1923,6 @@ const Constellations = (() => {
   }
   if(show.belowHorizon)line(lunarBelow,'#b2d3ee65',1.4,[3,6]);
   line(lunarAbove,'#b2d3ee',2);
-  small('— SOL',12,h-43,'#f2c87b','left');
-  small('— LUNA',76,h-43,'#b2d3ee','left');
   const sp=Astro.sky(ep.sun,0,ep,city),mp=Astro.sky(ep.moon,ep.mlat,ep,city);const pos=proj(sp),pm=proj(mp);
   if(mp[2]>=0||show.belowHorizon){
    ctx.save();if(mp[2]<0)ctx.globalAlpha=.28;
@@ -1945,7 +1943,6 @@ const Constellations = (() => {
     label(body.name,p,radius+8,-radius-4,body.color);
     ctx.restore();
    }
-   small('● PLANETAS',134,h-43,'#d7c6ee','left');
   }
  }
  function domeProject(az,alt,cam,width,height){
