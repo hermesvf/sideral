@@ -98,6 +98,14 @@ aside:has(details[open]){width:325px}.asidebody{display:block;padding:14px 16px;
  aside{max-height:calc(100% - var(--timeH,150px) - 90px)}
 }
 .tabs .viewToggle{display:none}
+/* Desktop: the views live in the top navbar */
+.top .tabs{position:static;z-index:auto;flex:0 1 auto;min-width:0;max-width:none;margin:0 0 0 6px;padding:0;gap:2px;background:transparent;border:0;box-shadow:none;border-radius:0;overflow-x:auto;scrollbar-width:none}
+.top .tabs::-webkit-scrollbar{display:none}
+.top .tabs button{padding:6px 10px;font-size:12.5px}
+.top .tabs button svg{width:15px;height:15px}
+.navInHeader .sceneMeta{top:16px}.navInHeader .stageFoot{top:42px}
+@media(max-width:1399px){.navInHeader .brandSub{display:none}}
+@media(max-width:1439px){.top .tabs button svg{display:none}.top .tabs button{padding:6px 8px}}
 @media(max-width:759px){
  .tabs{right:8px;max-width:none;flex-wrap:wrap;align-items:center;overflow:visible;gap:4px}
  .tabs button[data-mode]{order:1}
@@ -2828,6 +2836,9 @@ tg.onclick=e=>{e.stopPropagation();setOpen(!nav.classList.contains('open'))};
 nav.addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b||getComputedStyle(tg).display==='none')return;if(b.getAttribute('aria-pressed')==='true'&&!nav.classList.contains('open')){setOpen(true);return}setOpen(false)});
 document.addEventListener('pointerdown',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target))setOpen(false)});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){setOpen(false);tg.focus()}});})();
+(()=>{const nav=document.querySelector('.tabs'),main=document.querySelector('main'),topEnd=document.querySelector('.topEnd'),mq=matchMedia('(min-width:1180px)');
+const place=()=>{nav.classList.remove('open');if(mq.matches){topEnd.parentNode.insertBefore(nav,topEnd)}else{main.prepend(nav)}document.body.classList.toggle('navInHeader',mq.matches)};
+place();mq.addEventListener('change',place)})();
 document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{let md=b.dataset.mode;if(md===state.mode)return;pause();state.mode=md;$('atlasSheet').hidden=true;setCam();if(md==='constellations')ISS.refresh().then(changed=>{if(changed&&state.mode===md)update()});if(md==='planets')selectPlanet(state.planet);$('speedAmount').value=savedRates[md].amount;$('speedUnit').value=savedRates[md].unit;setSpeed();document.querySelectorAll('[data-mode]').forEach(t=>t.setAttribute('aria-pressed',String(t===b)));$('sceneName').textContent=({planets:'Sistema solar',orbit:'Vista heliocéntrica',day:'Rotación terrestre',sky:'Bóveda celeste',constellations:'Atlas del cielo local',zodiac:'Vista geocéntrica',earthorbits:'Órbitas terrestres'})[md];$('scaleHint').textContent=({planets:'Tamaños ampliados · distancias comprimidas',orbit:'Escala ilustrativa',day:'Eje inclinado 23,4°',sky:'Horizonte despejado',constellations:'Mirando desde el suelo · cielo envolvente',zodiac:'Zodíaco tropical',earthorbits:'Distancias a escala real'})[md];$('dragHint').textContent=md==='constellations'?'Arrastra para mirar alrededor':'Arrastra para girar';canvas.setAttribute('aria-label',md==='constellations'?'Vista desde dentro de la bóveda celeste. Arrastra para cambiar la dirección y altura de la mirada. La rueda mueve la mirada verticalmente; mantén Mayús para acercar.':'Modelo tridimensional. Arrastra o usa las flechas para girar. Usa más y menos para acercar o alejar.');$('scaleControls').hidden=md!=='orbit'&&md!=='planets';if(!$('scaleControls').hidden)scaleDescription();$('guideLabel').textContent=({orbit:'Órbitas y guías',planets:'Órbitas',day:'Eje y paralelos',sky:'Rejilla de altura',constellations:'Rejilla de altura',zodiac:'Escala zodiacal',earthorbits:'Órbitas y zona baja'})[md];$('compareLabel').hidden=md!=='sky';$('belowHorizonLabel').hidden=md!=='sky';$('skyPlanetsLabel').hidden=md!=='sky';$('skyArtLabel').hidden=md!=='constellations';$('layerPanel').hidden=true;$('layerBtn').setAttribute('aria-expanded','false');update()});
 // «Mi ubicación»: a place built from the browser's position. Coordinates are rounded to two
 // decimals (about 1 km, plenty for rise and set times) and remembered only in this browser.
