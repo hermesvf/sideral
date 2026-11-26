@@ -37,7 +37,8 @@
 @media(max-width:700px){.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 /* Full-viewport observatory */
-body{height:100vh;height:100dvh;display:flex;flex-direction:column}
+html{height:100%;overflow:hidden}
+body{height:100vh;height:100dvh;min-height:0;overflow:hidden;display:flex;flex-direction:column}
 header{flex:none;background:#10151b}
 .top{height:52px;max-width:none;width:100%;padding:0 18px}
 main{position:relative;flex:1;min-height:0;width:100%;max-width:none;margin:0;padding:0}
@@ -80,6 +81,21 @@ aside:has(details[open]){width:325px}.asidebody{display:block;padding:14px 16px;
  .stageFoot{display:none}
  .timeline,.sim:fullscreen .timeline,.sim.is-fullscreen .timeline{left:8px;width:calc(100% - 60px);bottom:8px}
  .timeControls{padding:9px}.timeRow{flex-wrap:wrap}.tools{right:8px}
+}
+@media(max-width:759px){
+ .timeline,.sim:fullscreen .timeline,.sim.is-fullscreen .timeline{max-height:none;overflow:visible;left:8px;right:8px;width:auto;bottom:max(8px,env(safe-area-inset-bottom))}
+ .tools,.sim:fullscreen .tools,.sim.is-fullscreen .tools{right:8px;bottom:calc(var(--timeH,150px) + 16px)}
+ .timeline>summary{display:none}
+ .timeline .timeControls{border-top:0;padding:8px 10px 9px}
+ .timeRow{flex-wrap:nowrap;gap:6px}
+ .timeRow>button{width:32px;height:32px}.timeRow>button#play{width:38px;height:38px}
+ .timeRow .datetime{min-width:0;flex:1}.timeRow .datetime>label{display:none}
+ .timeRow #dateText{font-size:16px;white-space:nowrap}.timeRow .dateEntry>i{display:none}
+ .timeRow .speed{padding:0 2px}.timeRow .speed input{width:30px}.timeRow .speed select{min-width:0;width:auto;font-size:12px;padding-right:16px}.timeRow .speed>i:first-child{display:none}.timeRow .speed>i:last-child{right:1px}
+ #clockRow{grid-template-columns:auto minmax(0,1fr) auto;column-gap:8px;margin-top:2px}
+ #clockRow>i,#clockRow>label,#clockRow>#zone{display:none}
+ .panelStack{max-height:calc(100% - var(--timeH,150px) - 70px)}
+ aside{max-height:calc(100% - var(--timeH,150px) - 90px)}
 }
 @media(max-height:480px){.panelStack{max-height:calc(100% - 80px)}.timeline,.sim:fullscreen .timeline,.sim.is-fullscreen .timeline{max-height:70%}}
 .panelStack:has(#atlasSheet:not([hidden])){width:min(325px,calc(100% - 24px))}
@@ -2940,7 +2956,7 @@ $('help').onclick=()=>{$('guide').showModal();pause()};$('closeHelp').onclick=()
 window.addEventListener('resize',()=>{redraw();solarChart();lunarChart()});new ResizeObserver(()=>{redraw();solarChart();lunarChart()}).observe($('stage'));
 $('seasonsMenu').onclick=()=>$('seasons').showModal();
 $('closeSeasons').onclick=()=>$('seasons').close();
-$('timeCard').open=window.innerWidth>=760&&window.innerHeight>=580;
+$('timeCard').open=window.innerWidth<760||window.innerHeight>=580;if(window.ResizeObserver){const tc=document.getElementById('timeCard');new ResizeObserver(()=>tc.closest('.sim').style.setProperty('--timeH',tc.offsetHeight+'px')).observe(tc)};
 $('fieldCard').ontoggle=()=>{solarChart()};
 setLive(true);
 })();
