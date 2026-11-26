@@ -1,0 +1,10 @@
+UNIVERSUM ORIGINAL IMAGE COLLECTION — REUSE TERMS
+CC BY-NC 4.0 — Attribution-NonCommercial 4.0 International
+Official binding legal code: https://creativecommons.org/licenses/by-nc/4.0/legalcode.en
+Readable summary: https://creativecommons.org/licenses/by-nc/4.0/
+
+These terms apply only to the original image files explicitly listed in MANIFEST.json, to the extent rights exist and Universum / Steve Cimolino has authority to license them. AI-assisted creation does not establish or guarantee exclusive copyright.
+Share and adapt for non-commercial purposes, retain attribution and the licence link, and identify modifications. Do not imply endorsement. Do not impose additional legal or technical restrictions on permitted uses. Non-commercial means not primarily directed toward commercial advantage or monetary compensation. Public-domain elements and statutory exceptions remain unaffected. No warranties are given; other rights may apply.
+Suggested attribution: Universum · Steve Cimolino — [image title], AI-assisted original illustration, CC BY-NC 4.0, https://universum.lu/a-propos/bibliotheques-images/ . Indicate any changes.
+This collection does not include or relicense Stellarium artwork, NASA imagery, third-party sky-culture linework, catalogue data or other external material.
+Artistic illustrations, not scientific observations or guaranteed astronomical measurements.
