@@ -97,7 +97,7 @@ aside:has(details[open]){width:325px}.asidebody{display:block;padding:14px 16px;
  .panelStack{max-height:calc(100% - var(--timeH,150px) - 70px)}
  aside{max-height:calc(100% - var(--timeH,150px) - 90px)}
 }
-.tabs .viewToggle{display:none}
+.menuBtn{display:none}
 /* Desktop: the views live in the top navbar */
 .top .tabs{position:static;z-index:auto;flex:0 1 auto;min-width:0;max-width:none;margin:0 0 0 6px;padding:0;gap:2px;background:transparent;border:0;box-shadow:none;border-radius:0;overflow-x:auto;scrollbar-width:none}
 .top .tabs::-webkit-scrollbar{display:none}
@@ -107,16 +107,16 @@ aside:has(details[open]){width:325px}.asidebody{display:block;padding:14px 16px;
 @media(max-width:1399px){.navInHeader .brandSub{display:none}}
 @media(max-width:1439px){.top .tabs button svg{display:none}.top .tabs button{padding:6px 8px}}
 @media(max-width:759px){
- .tabs{right:8px;max-width:none;flex-wrap:wrap;align-items:center;overflow:visible;gap:4px}
- .tabs button[data-mode]{order:1}
- .tabs button[data-mode][aria-pressed=true]{order:0}
- .tabs:not(.open) button[data-mode]:not([aria-pressed=true]){display:none}
- .tabs button svg{display:inline-block;width:15px;height:15px}
- .tabs .viewToggle{display:flex;order:0;margin-left:auto;align-items:center;gap:6px;color:var(--gold)!important;border:1px solid #514434!important;border-radius:7px;padding:6px 10px!important;font-size:12px}
- .viewToggle svg{width:13px!important;height:13px!important;transition:transform .2s}
- .tabs.open{z-index:6;background:#101720;box-shadow:0 12px 40px #000a}
- .tabs.open .viewToggle svg{transform:rotate(180deg)}
- .tabs.open button[data-mode]:not([aria-pressed=true]){flex:1 0 100%;justify-content:flex-start;padding:11px 10px;font-size:14px;border-top:1px solid #26303a;border-radius:0}
+ .menuBtn{display:grid;place-items:center;width:34px;height:34px;margin-right:-4px;border-radius:8px;color:#d8dde2}
+ .menuBtn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+ .menuBtn[aria-expanded=true]{background:#24231f;color:var(--gold)}
+ .brand>svg{display:none}.top{gap:8px}
+ .tabs:not(.open){display:none}
+ .tabs.open{display:flex;flex-direction:column;align-items:stretch;gap:2px;top:8px;left:8px;right:auto;width:min(250px,calc(100% - 16px));max-width:none;padding:6px;z-index:6;background:#101720;box-shadow:0 14px 44px #000b}
+ .tabs.open button{justify-content:flex-start;gap:10px;padding:11px 12px;font-size:14px}
+ .tabs button svg{display:inline-block;width:16px;height:16px}
+ .panelStack{top:8px}
+ .sceneMeta{top:16px}
 }
 @media(max-height:480px){.panelStack{max-height:calc(100% - 80px)}.timeline,.sim:fullscreen .timeline,.sim.is-fullscreen .timeline{max-height:70%}}
 .panelStack:has(#atlasSheet:not([hidden])){width:min(325px,calc(100% - 24px))}
@@ -125,8 +125,8 @@ aside:has(details[open]){width:325px}.asidebody{display:block;padding:14px 16px;
 #atlasSheet h2{margin:0;font:24px var(--serif)}#atlasSheet .dlgHead{margin-bottom:10px}#atlasSheet h3{margin:15px 0 4px;font-size:15px}#atlasSheet p{margin:6px 0;color:#c2ccd6}#atlasSheet a{color:var(--gold)}
 @media(max-width:600px){.panelStack:has(#atlasSheet:not([hidden])){max-width:76vw}}
 </style></head><body>
-<header><div class="top"><div class="brand"><svg aria-hidden="true" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.55"><circle cx="20" cy="20" r="10.4"/><ellipse cx="20" cy="20" rx="20" ry="6.4" transform="rotate(-39 20 20)"/></g><circle cx="30" cy="9" r="2.1" fill="currentColor"/></svg>Sideral</div><div class="brandSub">Observatorio interactivo</div><div class="topEnd"><label class="location"><i data-ico="pin"></i><select id="city" aria-label="Lugar de observación"><option value="sc">Sant Cugat del Vallès</option><option value="quito">Quito</option><option value="buenos">Buenos Aires</option><option value="tromso">Tromsø</option><option value="here">Mi ubicación</option></select><i data-ico="chev"></i></label><span id="cityNote" class="cityNote" role="status"></span><button id="seasonsMenu" type="button" class="help" title="Eventos astronómicos" aria-label="Abrir eventos astronómicos"><i data-ico="calendar"></i></button><button id="help" class="help" aria-label="Guía de uso" title="Guía de uso"><i data-ico="help"></i></button></div></div></header>
-<main aria-label="Observatorio"><nav class="tabs" aria-label="Vistas de la simulación"><button data-mode="orbit" aria-pressed="true"><i data-ico="orbit"></i>Sistema orbital</button><button data-mode="day" aria-pressed="false"><i data-ico="globe"></i>Día y noche</button><button data-mode="sky" aria-pressed="false"><i data-ico="sunrise"></i>Horizonte local</button><button data-mode="constellations" aria-pressed="false"><i data-ico="stars"></i>Constelaciones</button><button data-mode="zodiac" aria-pressed="false"><i data-ico="orbit"></i>Zodíaco</button><button data-mode="planets" aria-pressed="false"><i data-ico="orbit"></i>Planetas</button><button data-mode="earthorbits" aria-pressed="false"><i data-ico="satellite"></i>Órbitas</button><button id="viewToggle" class="viewToggle" type="button" aria-expanded="false" aria-label="Cambiar vista">Cambiar vista<i data-ico="chev"></i></button></nav>
+<header><div class="top"><button id="menuBtn" class="menuBtn" type="button" aria-label="Elegir vista" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="brand"><svg aria-hidden="true" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.55"><circle cx="20" cy="20" r="10.4"/><ellipse cx="20" cy="20" rx="20" ry="6.4" transform="rotate(-39 20 20)"/></g><circle cx="30" cy="9" r="2.1" fill="currentColor"/></svg>Sideral</div><div class="brandSub">Observatorio interactivo</div><div class="topEnd"><label class="location"><i data-ico="pin"></i><select id="city" aria-label="Lugar de observación"><option value="sc">Sant Cugat del Vallès</option><option value="quito">Quito</option><option value="buenos">Buenos Aires</option><option value="tromso">Tromsø</option><option value="here">Mi ubicación</option></select><i data-ico="chev"></i></label><span id="cityNote" class="cityNote" role="status"></span><button id="seasonsMenu" type="button" class="help" title="Eventos astronómicos" aria-label="Abrir eventos astronómicos"><i data-ico="calendar"></i></button><button id="help" class="help" aria-label="Guía de uso" title="Guía de uso"><i data-ico="help"></i></button></div></div></header>
+<main aria-label="Observatorio"><nav class="tabs" aria-label="Vistas de la simulación"><button data-mode="orbit" aria-pressed="true"><i data-ico="orbit"></i>Sistema orbital</button><button data-mode="day" aria-pressed="false"><i data-ico="globe"></i>Día y noche</button><button data-mode="sky" aria-pressed="false"><i data-ico="sunrise"></i>Horizonte local</button><button data-mode="constellations" aria-pressed="false"><i data-ico="stars"></i>Constelaciones</button><button data-mode="zodiac" aria-pressed="false"><i data-ico="orbit"></i>Zodíaco</button><button data-mode="planets" aria-pressed="false"><i data-ico="orbit"></i>Planetas</button><button data-mode="earthorbits" aria-pressed="false"><i data-ico="satellite"></i>Órbitas</button></nav>
 <div class="grid"><section class="sim" aria-label="Simulación interactiva">
 <div class="stage" id="stage"><canvas id="universe" tabindex="0" aria-label="Modelo tridimensional. Arrastra o usa las flechas para girar. Usa más y menos para acercar o alejar."></canvas><div class="sceneMeta"><span class="targetIcon" data-ico="focus"></span><span id="sceneName">Vista heliocéntrica</span></div>
 <div class="tools"><button id="zin" aria-label="Acercar" title="Acercar"><i data-ico="plus"></i></button><button id="zout" aria-label="Alejar" title="Alejar"><i data-ico="minus"></i></button><button id="reset" aria-label="Restablecer cámara" title="Restablecer cámara"><i data-ico="reset"></i></button><button id="fullscreen" aria-label="Pantalla completa" title="Pantalla completa"><i data-ico="expand"></i></button></div>
@@ -2831,10 +2831,10 @@ function setSpeed(){
 $('speedAmount').onchange=setSpeed;
 $('speedUnit').onchange=setSpeed;
 setSpeed();
-(()=>{const nav=document.querySelector('.tabs'),tg=$('viewToggle');const setOpen=o=>{nav.classList.toggle('open',o);tg.setAttribute('aria-expanded',String(o))};
+(()=>{const nav=document.querySelector('.tabs'),tg=$('menuBtn');const setOpen=o=>{nav.classList.toggle('open',o);tg.setAttribute('aria-expanded',String(o))};
 tg.onclick=e=>{e.stopPropagation();setOpen(!nav.classList.contains('open'))};
-nav.addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b||getComputedStyle(tg).display==='none')return;if(b.getAttribute('aria-pressed')==='true'&&!nav.classList.contains('open')){setOpen(true);return}setOpen(false)});
-document.addEventListener('pointerdown',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target))setOpen(false)});
+nav.addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b||getComputedStyle(tg).display==='none')return;setOpen(false)});
+document.addEventListener('pointerdown',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target)&&!tg.contains(e.target))setOpen(false)});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){setOpen(false);tg.focus()}});})();
 (()=>{const nav=document.querySelector('.tabs'),main=document.querySelector('main'),topEnd=document.querySelector('.topEnd'),mq=matchMedia('(min-width:1180px)');
 const place=()=>{nav.classList.remove('open');if(mq.matches){topEnd.parentNode.insertBefore(nav,topEnd)}else{main.prepend(nav)}document.body.classList.toggle('navInHeader',mq.matches)};
