@@ -23,7 +23,7 @@ Sideral es una sola página web, sin instalación ni dependencias, que calcula e
 | | |
 |:--|:--|
 | 🪐 **Sistema orbital** | La Tierra y la Luna alrededor del Sol, con la inclinación del eje y las estaciones. |
-| 🌍 **Día y noche** | La Tierra en 3D con textura real, la línea que separa el día de la noche y tu ciudad marcada. |
+| 🌍 **Día y noche** | La Tierra en 3D con nubes reales, las luces de las ciudades en el lado de noche y tu ciudad marcada. |
 | 🌅 **Horizonte local** | La bóveda celeste sobre tu cabeza: el arco del Sol y el de la Luna, sus alturas, y los planetas visibles. |
 | ✨ **Constelaciones** | El cielo envolvente desde el suelo, con figuras, la Vía Láctea y una ficha de atlas para cada constelación. |
 | ♈ **Zodíaco** | Qué significa que el Sol o la Luna «estén» en una constelación. |
@@ -85,7 +85,8 @@ docs/                        Capturas para este README
 
 - **Ilustraciones de constelaciones:** [Universum](https://universum.lu/en/atlas/constellations/) · Steve Cimolino, con licencia [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Detalles en [`ilustraciones-universum/LICENSE.txt`](ilustraciones-universum/LICENSE.txt).
 - **Figuras y catálogo de estrellas:** derivados de [d3-celestial](https://github.com/ofrohn/d3-celestial) de Olaf Frohn.
-- **Textura de la Tierra:** Blue Marble, NASA Earth Observatory.
+- **Textura de la Tierra:** Blue Marble (día) y Black Marble 2016 (luces nocturnas), NASA Earth Observatory.
+- **Nubes:** [Solar System Scope](https://www.solarsystemscope.com/textures/), a partir de datos de la NASA, con licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - **Fronteras y nombres de constelaciones:** [UAI](https://iauarchive.eso.org/public/themes/constellations/).
 - **Elementos orbitales de satélites:** [CelesTrak](https://celestrak.org/NORAD/elements/).
 - **Fórmulas:** [JPL · posiciones aproximadas de los planetas](https://ssd.jpl.nasa.gov/planets/approx_pos.html), [NOAA · ecuaciones solares](https://gml.noaa.gov/grad/solcalc/solareqns.PDF) y [USNO · posición aproximada del Sol](https://aa.usno.navy.mil/faq/sun_approx).
