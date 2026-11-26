@@ -99,6 +99,7 @@ aside:has(details[open]){width:325px}.asidebody{display:block;padding:14px 16px;
 }
 @media(max-height:480px){.panelStack{max-height:calc(100% - 80px)}.timeline,.sim:fullscreen .timeline,.sim.is-fullscreen .timeline{max-height:70%}}
 .panelStack:has(#atlasSheet:not([hidden])){width:min(325px,calc(100% - 24px))}
+.panelStack{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}.panelStack:has(#layerPanel:not([hidden])),.panelStack:has(#fieldCard[open]),.panelStack:has(#atlasSheet:not([hidden])){pointer-events:auto;touch-action:pan-y}
 #atlasSheet{box-sizing:border-box;width:100%;padding:14px;border:1px solid #38434e;border-radius:10px;background:#101720f5;color:var(--text);font-size:14px}
 #atlasSheet h2{margin:0;font:24px var(--serif)}#atlasSheet .dlgHead{margin-bottom:10px}#atlasSheet h3{margin:15px 0 4px;font-size:15px}#atlasSheet p{margin:6px 0;color:#c2ccd6}#atlasSheet a{color:var(--gold)}
 @media(max-width:600px){.panelStack:has(#atlasSheet:not([hidden])){max-width:76vw}}
