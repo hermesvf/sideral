@@ -2794,6 +2794,16 @@ function togglePlay(){if(state.playing){pause();return}setLive(false);state.play
 let playSequence=0;$('play').onclick=togglePlay;
 // The collapsed time card keeps a mini play button in its summary, mirroring the main one.
 $('playMini').onclick=e=>{e.preventDefault();e.stopPropagation();togglePlay()};
+// iOS WebKit may swallow the click that follows a tap while the page keeps changing (it treats the tap as a
+// hover). While the simulation plays, buttons are activated on pointerup and the late native click is ignored.
+(()=>{let down=null,fired=null;
+ document.addEventListener('pointerdown',e=>{fired=null;down=e.pointerType==='mouse'||!state.playing?null:{el:e.target.closest('button,summary'),x:e.clientX,y:e.clientY}},true);
+ document.addEventListener('pointercancel',()=>{down=null},true);
+ document.addEventListener('pointerup',e=>{const d=down;down=null;if(!d||!d.el||e.pointerType==='mouse'||d.el.disabled)return;
+  if(Math.hypot(e.clientX-d.x,e.clientY-d.y)>10||e.target.closest('button,summary')!==d.el)return;
+  e.preventDefault();fired={el:d.el,t:performance.now()};d.el.click()},true);
+ document.addEventListener('click',e=>{if(fired&&e.isTrusted&&performance.now()-fired.t<1500&&fired.el.contains(e.target)){e.preventDefault();e.stopImmediatePropagation();fired=null}},true);
+})();
 new MutationObserver(()=>{const p=$('play'),m=$('playMini');m.innerHTML=p.innerHTML;m.setAttribute('aria-label',p.getAttribute('aria-label'));m.title=p.title}).observe($('play'),{childList:true,attributes:true,attributeFilter:['aria-label']});
 // One frame = one step of the current speed setting (amount × unit).
 function stepFrame(direction){
