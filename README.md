@@ -69,13 +69,12 @@ Basta un servidor estático en la carpeta del proyecto:
 python3 -m http.server 8765
 ```
 
-Y abrir <http://localhost:8765/Sideral.html>. Para que funcione **Mi ubicación**, la página tiene que servirse desde `localhost` o `https`.
+Y abrir <http://localhost:8765/>. Para que funcione **Mi ubicación**, la página tiene que servirse desde `localhost` o `https`.
 
 ## Estructura
 
 ```
-Sideral.html                 La aplicación completa (HTML, CSS y JS en un solo archivo)
-index.html                   Redirige a Sideral.html
+index.html                   La aplicación completa (HTML, CSS y JS en un solo archivo)
 og-sideral.jpg               Imagen para compartir en redes
 ilustraciones-universum/     Ilustraciones de las 88 constelaciones y su alineación con el cielo
 docs/                        Capturas para este README
